@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EpiData xmlns="http://www.epidata.dk/XML/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.epidata.dk/XML/2.0 http://www.epidata.dk/XML/2.0/epx.xsd" version="3" xml:lang="en" cycle="18">
+  <Settings dateSeparator="/" timeSeparator="." decimalSeparator=","/>
+  <ProjectSettings autoIncStart="1" timedBackupInterval="10" backupOnShutdown="true" showFieldNames="false" showFieldBorders="true"/>
+  <StudyInfo>
+    <Title>
+      <Text xml:lang="en">Mitarbeiterinnenbefragung</Text>
+    </Title>
+    <Author/>
+    <Agency/>
+    <Created>2015/01/13 17.54.41</Created>
+    <Identifier/>
+    <Keywords/>
+    <Modified>2015/01/26 12.52.23</Modified>
+    <Notes/>
+    <Version>1</Version>
+  </StudyInfo>
+  <ValueLabelSets>
+    <ValueLabelSet id="_Skala" type="ftString" scope="vlsInternal">
+      <ValueLabel order="2" value="1">
+        <Label xml:lang="en">sehr zufriedenstellend</Label>
+      </ValueLabel>
+      <ValueLabel order="3" value="2">
+        <Label xml:lang="en">zufriedenstellend</Label>
+      </ValueLabel>
+      <ValueLabel order="4" value="3">
+        <Label xml:lang="en">ausreichend</Label>
+      </ValueLabel>
+      <ValueLabel order="5" value="4">
+        <Label xml:lang="en">verbesserungswürdig</Label>
+      </ValueLabel>
+      <ValueLabel order="6" value="5">
+        <Label xml:lang="en">sehr verbesserungswürdig</Label>
+      </ValueLabel>
+      <ValueLabel missing="true" order="7" value="99">
+        <Label xml:lang="en">keine Angabe</Label>
+      </ValueLabel>
+    </ValueLabelSet>
+    <ValueLabelSet id="Skala" type="ftInteger" scope="vlsInternal">
+      <ValueLabel order="2" value="1">
+        <Label xml:lang="en">sehr zufriedenstellend</Label>
+      </ValueLabel>
+      <ValueLabel order="3" value="2">
+        <Label xml:lang="en">zufriedenstellend</Label>
+      </ValueLabel>
+      <ValueLabel order="4" value="3">
+        <Label xml:lang="en">ausreichend</Label>
+      </ValueLabel>
+      <ValueLabel order="5" value="4">
+        <Label xml:lang="en">verbesserungswürdig</Label>
+      </ValueLabel>
+      <ValueLabel order="6" value="5">
+        <Label xml:lang="en">sehr verbesserungswürdig</Label>
+      </ValueLabel>
+      <ValueLabel missing="true" order="7" value="99">
+        <Label xml:lang="en">keine Angabe</Label>
+      </ValueLabel>
+    </ValueLabelSet>
+  </ValueLabelSets>
+  <DataFiles>
+    <DataFile id="datafile_id_1" created="2015/01/13 17.54.41" modified="2015/04/05 18.13.51" version="" afterRecordState="arsNewRecord">
+      <Caption>
+        <Text xml:lang="en">Dataform 1</Text>
+      </Caption>
+      <Sections>
+        <Section id="MAIN" top="0" left="0" width="0" height="0">
+          <Fields>
+            <Field id="ID" top="20" left="528" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">ID</Text>
+              </Question>
+            </Field>
+            <Field id="QGesamt" top="73" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Qualität insgesamt</Text>
+              </Question>
+            </Field>
+            <Field id="SympGesamt" top="137" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Symptomkontrolle insgesamt</Text>
+              </Question>
+            </Field>
+            <Field id="SympErfass" top="229" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Symptomerfassung</Text>
+              </Question>
+            </Field>
+            <Field id="SympDoku" top="263" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Symptomdokumentation</Text>
+              </Question>
+            </Field>
+            <Field id="SympBehand" top="298" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Symptombehandlung</Text>
+              </Question>
+            </Field>
+            <Field id="SympVorbeug" top="333" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Symptomvorbeugung</Text>
+              </Question>
+            </Field>
+            <Field id="SympSchulung" top="368" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Patientenschulung</Text>
+              </Question>
+            </Field>
+            <Field id="SympSchmerz" top="447" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Schmerzen</Text>
+              </Question>
+            </Field>
+            <Field id="SympLuft" top="482" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Luftnot</Text>
+              </Question>
+            </Field>
+            <Field id="SympAngst" top="517" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Angst / Unruhe</Text>
+              </Question>
+            </Field>
+            <Field id="SympNausea" top="552" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Appetitlosigkeit, Übelkeit, Erbrechen</Text>
+              </Question>
+            </Field>
+            <Field id="SympObsti" top="587" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Durchfall / Obstipation</Text>
+              </Question>
+            </Field>
+            <Field id="SympFatigue" top="622" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Fatigue</Text>
+              </Question>
+            </Field>
+            <Field id="SympKogni" top="657" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Bewusstseinsstörungen</Text>
+              </Question>
+            </Field>
+            <Field id="SympWunde" top="692" left="234" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Wunden</Text>
+              </Question>
+            </Field>
+            <Field id="SympAndere" top="727" left="234" type="ftString" length="30" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">Andere Symptome</Text>
+              </Question>
+            </Field>
+            <Field id="SympAndWert" top="727" left="556" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala"/>
+            <Field id="SympAnmerk" top="772" left="94" type="ftString" length="80" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">Anmerkungen</Text>
+              </Question>
+            </Field>
+            <Field id="SicherGesamt" top="876" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Sicherheitsversprechen insgesamt</Text>
+              </Question>
+            </Field>
+            <Field id="SicherKriseVerm" top="911" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Vermeidung von Krisensituationen</Text>
+              </Question>
+            </Field>
+            <Field id="SicherKriseAuff" top="946" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Auffangen von Krisensituationen</Text>
+              </Question>
+            </Field>
+            <Field id="SicherMedi" top="981" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Sicherheit der Medikation</Text>
+              </Question>
+            </Field>
+            <Field id="SicherInfekt" top="1016" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Sicherheit vor Infektionen</Text>
+              </Question>
+            </Field>
+            <Field id="SicherVerletz" top="1051" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Sicherheit vor Verletzungen</Text>
+              </Question>
+            </Field>
+            <Field id="SicherAndere" top="1091" left="322" type="ftString" length="30" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">Andere Gefahren</Text>
+              </Question>
+            </Field>
+            <Field id="SicherAndWert" top="1091" left="540" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala"/>
+            <Field id="SicherAnmerk" top="1132" left="162" type="ftString" length="100" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">Anmerkungen</Text>
+              </Question>
+            </Field>
+            <Field id="AllGesamt" top="1231" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung insgesamt</Text>
+              </Question>
+            </Field>
+            <Field id="AllKrankheit" top="1266" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung Krankheit</Text>
+              </Question>
+            </Field>
+            <Field id="AllPflege" top="1301" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung Pflege</Text>
+              </Question>
+            </Field>
+            <Field id="AllSozial" top="1336" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung sozial</Text>
+              </Question>
+            </Field>
+            <Field id="AllOrga" top="1371" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung organisatorisch</Text>
+              </Question>
+            </Field>
+            <Field id="AllSpirit" top="1406" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung spirituell</Text>
+              </Question>
+            </Field>
+            <Field id="AllKultur" top="1441" left="318" type="ftInteger" length="2" decimals="0" entryMode="emDefault" showValueLabel="true" valueLabelRef="Skala">
+              <Question>
+                <Text xml:lang="en">Alltagsrahmung kulturell</Text>
+              </Question>
+            </Field>
+            <Field id="AllAnmerk" top="1481" left="162" type="ftString" length="100" decimals="0" entryMode="emDefault" showValueLabel="true">
+              <Question>
+                <Text xml:lang="en">Anmerkungen</Text>
+              </Question>
+            </Field>
+            <Field id="Freitext" top="1574" left="188" type="ftString" length="500" decimals="0" entryMode="emDefault" showValueLabel="true"/>
+          </Fields>
+          <Headings>
+            <Heading id="Titel" top="20" left="26" type="htH1">
+              <Caption>
+                <Text xml:lang="en">Mitarbeiter/innenbefragung PCT-Ost</Text>
+              </Caption>
+            </Heading>
+            <Heading id="Symptom" top="101" left="32" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Symptomkontrolle</Text>
+              </Caption>
+            </Heading>
+            <Heading id="SymtpomProzess" top="167" left="61" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Teilaufgaben</Text>
+              </Caption>
+            </Heading>
+            <Heading id="Symptome" top="415" left="67" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Symptome</Text>
+              </Caption>
+            </Heading>
+            <Heading id="Sicherheit" top="827" left="111" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Sicherheitsversprechen</Text>
+              </Caption>
+            </Heading>
+            <Heading id="Alltagsrahmung" top="1195" left="119" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Alltagsrahmung</Text>
+              </Caption>
+            </Heading>
+            <Heading id="Frei" top="1574" left="102" type="htH2">
+              <Caption>
+                <Text xml:lang="en">Freitext</Text>
+              </Caption>
+            </Heading>
+          </Headings>
+        </Section>
+      </Sections>
+      <Records modified="2015/04/05 18.13.51" encryptedSalt="">
+        <Record status="rsNormal">QGesamt=2;SympGesamt=3;SympErfass=4;SympDoku=4;SympBehand=2;SympVorbeug=2;SympSchulung=4;SympSchmerz=2;SympLuft=2;SympAngst=3;SympNausea=2;SympObsti=2;SympFatigue=4;SympKogni=2;SympWunde=1;SympAndere="Inkontinenz";SympAndWert=2;SympAnmerk="Ich schreib hier mal was rein";SicherGesamt=2;SicherKriseVerm=3;SicherKriseAuff=2;SicherMedi=3;SicherInfekt=2;SicherVerletz=2;SicherAndWert=99;SicherAnmerk="keine Anmerungn";AllGesamt=1;AllKrankheit=1;AllPflege=4;AllSozial=3;AllOrga=3;AllSpirit=4;AllKultur=2;Freitext="baldower"</Record>
+        <Record status="rsNormal">QGesamt=1;SympGesamt=3;SympErfass=4;SympDoku=3;SympBehand=4;SympVorbeug=2;SympSchulung=5;SympSchmerz=99;SympLuft=99;SympAngst=4;SympNausea=3;SympObsti=2;SympFatigue=5;SympKogni=3;SympWunde=99;SympAndere="Blabla";SympAndWert=1;SympAnmerk="keine weiteren Anmerkungen";SicherGesamt=2;SicherKriseVerm=1;SicherKriseAuff=3;SicherMedi=2;SicherInfekt=4;SicherVerletz=99;SicherAndWert=2;AllGesamt=2;AllKrankheit=1;AllPflege=1;AllSozial=1;AllOrga=2;AllSpirit=3;AllKultur=2;AllAnmerk="kjasdf";Freitext="öalskdjf assd elkj "</Record>
+        <Record status="rsNormal">ID=3;QGesamt=2;SympGesamt=1;SympErfass=4;SympDoku=3;SympBehand=2;SympVorbeug=5;SympSchmerz=2;SympLuft=1;SympAngst=2;SympNausea=4;SympObsti=2;SympFatigue=3;SympKogni=2;SympWunde=4;SympAndere="lkjas";SympAndWert=1;SympAnmerk="ölkjasdf";SicherGesamt=2;SicherKriseVerm=2;SicherKriseAuff=1;SicherMedi=3;SicherInfekt=2;SicherVerletz=3;AllGesamt=2;AllKrankheit=2;AllPflege=3;AllSozial=1;AllOrga=1;AllSpirit=1;AllKultur=3;Freitext="öakljsf"</Record>
+        <Record status="rsNormal">ID=4;QGesamt=3;SympGesamt=2;SympErfass=2;SympDoku=2;SympBehand=2;SympVorbeug=2;SympSchulung=2;SympSchmerz=1;SympLuft=3;SympAngst=2;SympNausea=4;SympObsti=1;SympKogni=3;SympWunde=2;SicherKriseVerm=3;SicherKriseAuff=2;SicherMedi=3;SicherInfekt=1;SicherVerletz=3;SicherAndere="3";AllGesamt=1;AllKrankheit=3;AllPflege=3;AllSozial=1;AllSpirit=1;AllKultur=3</Record>
+        <Record status="rsNormal">ID=3;QGesamt=3;SympGesamt=3;SympErfass=3;SympDoku=3;SympBehand=3;SympVorbeug=3;SympSchulung=3;SympSchmerz=3;SympLuft=3;SympAngst=3;SympNausea=3;SympObsti=3;SympFatigue=3;SympKogni=3;SympWunde=3;SympAndere="3";SympAndWert=3;SicherGesamt=2;SicherKriseVerm=1;SicherKriseAuff=2;SicherMedi=3;SicherInfekt=1;SicherVerletz=3;AllGesamt=1;AllPflege=1;AllOrga=1;AllKultur=1</Record>
+        <Record status="rsNormal">ID=6;QGesamt=2;SympGesamt=1;SympErfass=4;SympDoku=3;SympBehand=2;SympVorbeug=3;SympSchulung=2;SympSchmerz=1;SympLuft=1;SympAngst=4;SympNausea=3;SympObsti=2;SympFatigue=4;SympKogni=5;SympWunde=2;SicherGesamt=1;SicherKriseVerm=3;SicherKriseAuff=1;SicherMedi=3;SicherInfekt=3;SicherVerletz=3;AllGesamt=1;AllKrankheit=99;AllPflege=99;AllSozial=2;AllOrga=1;AllSpirit=1;AllKultur=3;AllAnmerk="Mal sehen, wie viel Text man hier überhaupt hinein schreiben kann. Es wäre ja ziemlich doof, wenn da";Freitext="s begrenzt wäre. Und siehe da, es ist tatsächlich begrenzt. Da muss ich gleich mal nachschauen, ob man das weiter fasssen kan. Ja, es sieht so aus, denn das Freitextfeld fasst viel mehr Zeichen als die Anmerkungen zur Alltagsrahmunb"</Record>
+        <Record status="rsNormal">ID=7;QGesamt=3;SympGesamt=2;SympErfass=1;SympDoku=4;SympBehand=3;SympVorbeug=3;SympSchulung=1;SympSchmerz=4;SympLuft=3;SympAngst=2;SympObsti=2;SympFatigue=2;SympKogni=3;SympWunde=4;SympAndere="langeweile";SympAndWert=3;SympAnmerk="Hier schreibe ich einige Sätze hinein.";SicherGesamt=1;SicherKriseVerm=1;SicherKriseAuff=2;SicherMedi=1;SicherInfekt=4;SicherVerletz=3;SicherAnmerk="nix";AllGesamt=2;AllKrankheit=1;AllPflege=4;AllSozial=2;AllOrga=1;AllSpirit=4;AllKultur=2</Record>
+      </Records>
+    </DataFile>
+  </DataFiles>
+  <Relations>
+    <Relation id="relation_id_1" dataFileRef="datafile_id_1"/>
+  </Relations>
+</EpiData>
