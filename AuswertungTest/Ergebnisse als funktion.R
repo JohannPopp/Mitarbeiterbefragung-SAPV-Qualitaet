@@ -19,12 +19,15 @@ Auswerter <- character()
 ### Datendatei
 Eingabe <- "Mitarbeiterinnenbefragung_Dataform_1_15.csv"
 
-Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe = FALSE, erklAusg = FALSE, erklSynt = FALSE, hist = TRUE, box = TRUE, grid = TRUE, kA = TRUE){
+Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, art = "orig", datEingabe = FALSE, erklAusg = FALSE, erklSynt = FALSE, hist = TRUE, box = TRUE, grid = TRUE, kA = TRUE){
   
   ### Daten einlesen (die in EpiData mit ";" als Trennzeichen als csv exportiert wurden)
   if(datEingabe == FALSE){
+    Eingabe <- (file.choose())
     dat <- read.csv2(Eingabe) 
     dat[dat == 99] <- NA
+    Pf <- strsplit(Eingabe, "/")[[1]]
+    Pfad <- paste(Pf[-length(Pf)], "/", sep = "",  collapse = "")
   }
   
   # Falls die Daten nicht aus einer csv-Datei eingelesen werden sollen, sondern innerhalb von R in eine Datenmatrix eingegeben werden sollen, kann das Argument "datEingabe = TRUE" in die Funktion Ausgwertung eingetragen werden.
@@ -33,8 +36,18 @@ Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe
     dat <- data.frame(ID = numeric(), QGesamt = numeric(), SympGesamt = numeric(), SympErfass = numeric(), SympDoku = numeric(), SympBehand = numeric(), SympVorbeug = numeric(), SympSchulung = numeric(), SympSchmerz = numeric(), SympLuft = numeric(), SympAngst = numeric(), SympNausea = numeric(), SympObsti = numeric(), SympFatigue = numeric(), SympKogni = numeric(), SympWunde = numeric(), SympAndere = character(), SympAndWert = numeric(), SympAnmerk = character(), SicherGesamt = numeric(), SicherKriseVerm  = numeric(), SicherKriseAuff = numeric(), SicherMedi = numeric(), SicherInfekt = numeric(), SicherVerletz = numeric(), SicherAndere = character(), SicherAndWert = numeric(), SicherAnmerk = character(), AllGesamt = numeric(), AllKrankheit = numeric(), AllPflege = numeric(), AllSozial = numeric(), AllOrga = numeric(), AllSpirit = numeric(), AllKultur = numeric(), AllAnmerk = character(), Freitext = character())
     fix(dat)
     write.csv2(dat, file.choose(), row.names = FALSE)
+    Pfad <- ""
+  }
+
+  
+  ### Daten modifizieren
+  if(art == "abwGesamt"){
+    dat[,c(2:16, 18, 20:25, 27, 29:35)] <-  t(apply(dat[,c(2:16, 18, 20:25, 27, 29:35)], 1, function(x) x - x[1]))
   }
   
+  if(art == "abwMedian"){
+    dat[,c(2:16, 18, 20:25, 27, 29:35)] <-  t(apply(dat[,c(2:16, 18, 20:25, 27, 29:35)], 1, function(x) x - median(x, na.rm = TRUE)))
+  }
   
   ### Text aus dem Fragebogen heraus kopieren
   txt <- read.csv2("Fragebogen.csv", colClasses = "character")[,1]
@@ -42,30 +55,41 @@ Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe
   
   ### Name in die Fußnoten einfügen.
   Aut <- paste(paste(auswerter, collapse = ", "), if(length(auswerter) >= 1){" & "},"J. Popp", sep = "")
-  Fussn <- paste("Mitarbeiter/innenbefragung zur SAPV-Qualität im Team", SAPVteam, ". ", Aut, ": ", Sys.Date(),".", sep = "")
+  Fussn <- paste("Mitarbeiter/innenbefragung zur SAPV-Qualität im Team ", team, ". ", Aut, ": ", Sys.Date(),".", sep = "")
   
   
   ### Name der Ausgabedatei erstellen
-  Ausgabe <- paste("Ergebnisse der Mitarbeiterbefragung - ", SAPVteam, " ", Sys.Date(), ".pdf", sep = "")
+  Ausgabe <- paste(Pfad, "Ergebnisse der Mitarbeiterbefragung - ", team, " ", Sys.Date(), ".pdf", sep = "")
+  
+  ### Einstellungen für die verschiedenen Darstellungsformen
+  hoehe <- length(dat[,1])
+  teiler <- c(0.5, 1.5, 2.5, 3.5, 4.5, 5.5)
+  laenge <- c(0.5, 6)
+  if(art == "abwGesamt" | art == "abwMedian"){
+    teiler <- seq(-4.5, 4.5)
+    laenge <- c(-4.5, 5.5)
+  }
+  
   
   ######## Funktionen #############
   
   # Funktion zur Erstellung der Grafiken
-  ergebnis <- function(x, farbe = "#a1d99b99"){ 
-    hoehe <- length(dat[,1])
-    h <- hist(x, breaks = c(0.5, 1.5, 2.5, 3.5, 4.5, 5.5), xlim = c(0.5,6), ylim = c(0,hoehe),
+  hoehe <- length(dat[,1])
+  ergebnis <- function(x, farbe = "#a1d99b99", ...){ 
+    h <- hist(x, breaks = teiler, xlim = laenge, ylim = c(0,hoehe),
               axes = FALSE, col = "grey", border = "black", main = "", ylab = "", xlab = "")
-    segments(x0 = c(0.5, 1.5, 2.5, 3.5, 4.5, 5.5), y0 = rep(0, 6), y1 = rep(15, 6), col = "grey30", lty = 2)
+    segments(x0 = teiler, y0 = rep(0, 6), y1 = rep(hoehe, 6), col = "grey30", lty = 2)
+    if(art == "abwGesamt" | art == "abwMedian"){
+      lines(c(0, 0), c(0.01, hoehe), lwd = 3, col = "grey40")
+    }
     if(sum(is.na(x)) > 0){
-      #polygon(c(6.4,6.4,6.6,6.6), c(0, rep(sum(is.na(x)),2), 0), col = "grey30", border = NA)
-      #text(6.5, sum(is.na(x)) + 1, sum(is.na(x)), col = "grey40", cex = 1, adj = c(NA, 0))
-      text(5.6, hoehe*0.5, paste("k.A. =", sum(is.na(x))), adj = c(0, NA))
+      text(laenge[2]*1.03, hoehe*0.1, paste("k.A. =", sum(is.na(x))), adj = c(1, NA))
     }
     boxplot(x, horizontal = TRUE, add = TRUE, axes = FALSE, 
             at = hoehe/2, boxwex = hoehe, 
             lwd = 1.5, col = farbe)
     points(mean(x, na.rm = TRUE), hoehe/2, col = "grey50", cex = 2, lwd = 1.5, pch = 1)
-    text(5.6, hoehe*0.9, paste("n =", sum(!is.na(x))), adj = c(0, NA))
+    text(laenge[2]*1.03, hoehe*0.5, paste("n =", sum(!is.na(x))), adj = c(1, NA))
   }
   
   # Funktion für die Wertelabels
@@ -79,11 +103,24 @@ Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe
     lines(c(0, 10), c(0, 0))
   }
   
+  if(art == "abwGesamt" | art == "abwMedian"){
+    bezeich <- function(x, ...){
+      plot(10, xlim = laenge, ylim = c(0,1), axes = FALSE)
+      text(seq(-4,4), 0.1, seq(-4,4), adj = c(NA, 0))
+      text(c(-4, 4), 0.4, c("besser", "schlechter"))
+      if(art == "abwGesamt"){
+        text(0, 0.6, "Abweichung von der persönlichen Gesamtbewertung")
+      }
+      if(art == "abwMedian"){
+        text(0, 0.5, "Abweichung vom persönlichen Median")
+      }      
+      lines(laenge*2, c(0,0))
+    }
+  }
   
   ########## pdf-Dokument erstellen #########
   
-  pdf("Ergebnis.pdf", paper = "a4r", width = 10.5, height = 7.5)
-  #pdf(Ausgabe, paper = "a4r", width = 10.5, height = 7.5)
+  pdf(Ausgabe, paper = "a4r", width = 10.5, height = 7.5)
   par(mar = c(0,0,0,0))
   
   ############
@@ -106,7 +143,7 @@ Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe
   
   # Zeile 1
   plot(10, xlim = c(0, 1), ylim = c(0,1), axes = FALSE, ylab = "", xlab = "")
-  text(0.5, c(0.5), paste(strwrap(paste("Wie schätzt du die Qualität der Arbeit des SAPV-Teams", SAPVteam, "ein?"), 60), collapse = "\n", sep = ""), adj = c(0.5,0.5), cex = 3, font = 2)
+  text(0.5, c(0.5), paste(strwrap(paste("Wie schätzt du die Qualität der Arbeit des SAPV-Teams", team, "ein?"), 60), collapse = "\n", sep = ""), adj = c(0.5,0.5), cex = 3, font = 2)
   
   # Zeile 2
   plot.new()
@@ -117,7 +154,7 @@ Auswertung <- function(daten, team = SAPVteam, auswerter = Auswerter, datEingabe
   
   # Zeile 3
   plot.new()
-  text(0, 0.5, paste(strwrap(paste("Wie schätzt du die Qualität der Arbeit des SAPV-Teams", SAPVteam, "insgesamt ein?"), 72), collapse = "\n", sep = ""), adj = c(0,NA), cex = 1.5)
+  text(0, 0.5, paste(strwrap(paste("Wie schätzt du die Qualität der Arbeit des SAPV-Teams", team, "insgesamt ein?"), 72), collapse = "\n", sep = ""), adj = c(0,NA), cex = 1.5)
   
   ergebnis(dat$QGesamt, farbe = "#2b8cbe99")
   
