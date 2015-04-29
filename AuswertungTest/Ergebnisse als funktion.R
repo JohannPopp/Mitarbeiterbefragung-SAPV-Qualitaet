@@ -4,9 +4,8 @@
 
 # Johann Popp
 # Erstellt:             2015-03-30
-# Letzte Überarbeitung: 2015-04-28
+# Letzte Überarbeitung: 2015-04-29
 #############################################
-
 
 
 
@@ -50,7 +49,7 @@ Auswertung <- function(daten = "", team = "", auswerter = "", art = "", datEinga
     dat <- data.frame(ID = numeric(), QGesamt = numeric(), SympGesamt = numeric(), SympErfass = numeric(), SympDoku = numeric(), SympBehand = numeric(), SympVorbeug = numeric(), SympSchulung = numeric(), SympSchmerz = numeric(), SympLuft = numeric(), SympAngst = numeric(), SympNausea = numeric(), SympObsti = numeric(), SympFatigue = numeric(), SympKogni = numeric(), SympWunde = numeric(), SympAndere = character(), SympAndWert = numeric(), SympAnmerk = character(), SicherGesamt = numeric(), SicherKriseVerm  = numeric(), SicherKriseAuff = numeric(), SicherMedi = numeric(), SicherInfekt = numeric(), SicherVerletz = numeric(), SicherAndere = character(), SicherAndWert = numeric(), SicherAnmerk = character(), AllGesamt = numeric(), AllKrankheit = numeric(), AllPflege = numeric(), AllSozial = numeric(), AllOrga = numeric(), AllSpirit = numeric(), AllKultur = numeric(), AllAnmerk = character(), Freitext = character())
     fix(dat)
     readline("Wälen Sie einen Speicherort.\n
-             Weiter mit beliebiger Taste.")
+             Weiter mit Enter.")
     Eingabe <- file.choose()
     write.csv2(dat, Eingabe, row.names = FALSE)
     
@@ -626,24 +625,6 @@ Auswertung <- function(daten = "", team = "", auswerter = "", art = "", datEinga
               daten = dat$Freitext, seite = i + sum(Seiten[1:3])+4, i = i)
   }
   
-#   lmatr5 <- matrix(c(1,2,3), nrow = 3)
-#   layout(lmatr5, heights = lcm(c(2.5,16,0.5)))
-#   
-#   # Zeile 1
-#   plot.new()
-#   text(-0.02, 0.2, paste(strwrap(paste("Welche weiteren Qualitätsaspekte sind dir bei der Arbeit des SAPV-Teams", SAPVteam, "wichtig und welche weiteren Anmerkungen hast du?"), 105), collapse = "\n", sep = ""), adj = c(0,NA), cex = 1.8, font = 2)
-#   
-#   # Zeile 2
-#   plot(10, ylim = c(0,5), xlim = c(0,1), axes = FALSE)
-#   text(-0.02, 5,
-#        paste(Zeilen(dat$Freitext), collapse = "\n"), adj = c(0, 1), cex = 1.5)
-#   
-#   # Zeile 3
-#   plot.new()
-#   lines(c(-0.02,3), c(1,1))
-#   text(1.04, 0.1, "Seite 5 von 5", adj = c(1,0))
-#   text(-0.02, 0.1, Fussn, adj = c(0,0))
-#   
   
   ######## Erstellen abschließen ##########
   
@@ -652,21 +633,3 @@ Auswertung <- function(daten = "", team = "", auswerter = "", art = "", datEinga
 
 Auswertung(team = "PCT-Ost")
 
-
-##### Diese Unterfunktion teilt Freitext in gut druckbare Zeilen auf.
-# Zeilen <- function(x, länge = 100, ...){
-#   strwrap(
-#     unlist(
-#       strsplit(
-#         paste(unlist(
-#           strsplit(x, "-&&-")
-#         ), 
-#         collapse = "\\n\\n"), 
-#         "\\\\n")
-#     ), länge
-#   )  
-# }
-# 
-# plot.new()
-# text(0, 1, paste(Zeilen(dat[,37], 120), collapse = "\n"), adj = c(0,1), cex = 0.5)
-# length(Zeilen(dat[,37], 100))
